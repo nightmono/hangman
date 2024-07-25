@@ -20,7 +20,7 @@ def main():
     hint = ["_"] * len(word)
     game_running = True
     incorrect_tries = 0
-    used_words = []
+    used_letters = []
 
     while game_running:
         print_graphic(incorrect_tries)
@@ -38,11 +38,11 @@ def main():
 
         letter_input = input("Letter: ")
 
-        if letter_input in used_words:
-            print("Word already used\n")
+        if letter_input in used_letters:
+            print("Letter already used\n")
             continue
         else:
-            used_words.append(letter_input)
+            used_letters.append(letter_input)
 
         if letter_input not in word:
             incorrect_tries += 1
