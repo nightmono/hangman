@@ -3,7 +3,7 @@
 import random
 import sys
 
-WORDLIST = {"linux", "gnu", "vim", "python"}
+WORDLIST = ["linux", "gnu", "vim", "python"]
 HANGMAN_GRAPHICS = [" O\n\n", " O\n |\n", " O\n/|\n", " O\n/|\\\n", " O\n/|\\\n/", " O\n/|\\\n/ \\"]
 
 def print_hint(hint: list[str]):
@@ -16,7 +16,7 @@ def print_graphic(tries: int):
     print(HANGMAN_GRAPHICS[tries])
 
 def main():
-    word = random.choice(list(WORDLIST))
+    word = random.choice(WORDLIST)
     hint = ["_"] * len(word)
     game_running = True
     incorrect_tries = 0
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     elif len(sys.argv) > 1:
         with open(sys.argv[1], "r") as f:
             # Using a set to avoid duplicates, which would affect probabilites
-            WORDLIST = set(f.read().split())
+            WORDLIST = list(set(f.read().split()))
 
     main()
 
